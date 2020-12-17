@@ -1,0 +1,24 @@
+.form {
+  width: 500px;
+  border: 2px solid black;
+  margin-bottom: 20px;
+}
+
+.form__input {
+  display: block;
+}
+
+.poems-container {
+  width: 500px;
+  min-height: 300px;
+  border: 2px solid black;
+}
+
+.poem {
+  border: 1px solid red
+}
+
+.poem__text {
+  font-size: 10px;
+  color: rgb(0, 0, 136);
+}
