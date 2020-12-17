@@ -2,18 +2,31 @@ const containerOfPoems = document.querySelector('.poems-container')
 const templatePoem = document.querySelector('#template-poem')
 const form = document.querySelector('.form')
 // Проверка на наличие ОДНОГО слова
-function searchPoems(word1, setOfPoems) {
+function searchPoems(setOfPoems, word1, word2 = "", word3 = "", word4 = "") {
   const filterObj = setOfPoems.filter((item) => {
-    return item.fields.text.includes(word1)
+    return item.fields.text.includes(word1) && item.fields.text.includes(word2) && item.fields.text.includes(word3) && item.fields.text.includes(word4)
   })
-  const result = filterObj.map((item) => { return item.fields.text })
+  const result = filterObj.map((item) => {
+    let regex = new RegExp("(.+(" + word1 + "|" + word2 + "|" + word3 + "|" + word4 + ").+)", "gm");
+    let m
+
+    while ((m = regex.exec(item.fields.text)) !== null) {
+      if (m.index === regex.lastIndex) {
+        regex.lastIndex++
+      }
+      m.forEach((match, groupIndex) => {
+        console.log(`Found match, group ${groupIndex}: ${match}`)
+      })
+    }
+    return item.fields.text
+  })
   return result
 }
 
 const requestURL = 'http://buymebuyme.xyz'
 const xhr = new XMLHttpRequest()
 xhr.responseType = 'json'
-//GET запрос
+//Запрос и вывод стихов
 function outputPoem(evt) {
   evt.preventDefault()
   xhr.open('GET', requestURL)
@@ -21,26 +34,25 @@ function outputPoem(evt) {
     if (xhr.status >= 400) {
       console.error('ошибка')
     } else {
-      const firstWord = document.querySelector('.form__input').value
-      console.log(searchPoems(firstWord, xhr.response))
+      let [word1, word2, word3, word4] = document.querySelector('.form__input').value.split(' ')
+      console.log(searchPoems(xhr.response, word1, word2, word3, word4))
     }
   }
   xhr.onerror = () => { console.log('ошибка') }
   xhr.send()
-  // renderPoemsInContainer()
-  // // console.log(createPoem())
 }
 
 // При нажатии на кнопку формы
 form.addEventListener('submit', outputPoem)
-// function createPoem() {
-//   const poem = templatePoem.content.cloneNode(true)
-//   const poemText = poem.querySelector('.poem__text')
-//   poemText.textContent = searchPoems(searchWord1, xhr.response)
-//   return poem
-// }
 
-// function addPoemsInContainer(arrOfPoems, containerOfPoems) {
-//   const newPoem = createPoem()
-//   newPoem.append
-// }
+function createPoem() {
+  const poem = templatePoem.content.cloneNode(true)
+  const poemText = poem.querySelector('.poem__text')
+  poemText.textContent = searchPoems(searchWord1, xhr.response)
+  return poem
+}
+
+function addPoemsInContainer(arrOfPoems, containerOfPoems) {
+  const newPoem = createPoem()
+  newPoem.append
+}
