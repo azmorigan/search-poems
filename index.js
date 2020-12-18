@@ -24,7 +24,9 @@ function searchPoems(setOfPoems, word1, word2 = "", word3 = "", word4 = "") {
       if (row.includes(word4) && word4 !== "") {
         rowPoem += row
       }
-      return rowPoem
+      if (rowPoem) {
+        return rowPoem + '\n'
+      }
     })
     return poemSearchRow.join('')
   })
