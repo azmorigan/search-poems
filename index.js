@@ -7,18 +7,26 @@ function searchPoems(setOfPoems, word1, word2 = "", word3 = "", word4 = "") {
     return item.fields.text.includes(word1) && item.fields.text.includes(word2) && item.fields.text.includes(word3) && item.fields.text.includes(word4)
   })
   const result = filterObj.map((item) => {
-    let regex = new RegExp("(.+(" + word1 + "|" + word2 + "|" + word3 + "|" + word4 + ").+)", "gm");
-    let m
-
-    while ((m = regex.exec(item.fields.text)) !== null) {
-      if (m.index === regex.lastIndex) {
-        regex.lastIndex++
+    //   let regex = new RegExp("(.+(" + word1 + "|" + word2 + "|" + word3 + "|" + word4 + ").+)", "gm");
+    //   let m = regex.exec(item.fields.text)
+    let stringToArr = item.fields.text.split('\n')
+    let poemSearchRow = stringToArr.map((row) => {
+      let rowPoem = ""
+      if (row.includes(word1) && word1 !== "") {
+        rowPoem += row
       }
-      m.forEach((match, groupIndex) => {
-        console.log(`Found match, group ${groupIndex}: ${match}`)
-      })
-    }
-    return item.fields.text
+      if (row.includes(word2) && word2 !== "") {
+        rowPoem += row
+      }
+      if (row.includes(word3) && word3 !== "") {
+        rowPoem += row
+      }
+      if (row.includes(word4) && word4 !== "") {
+        rowPoem += row
+      }
+      return rowPoem
+    })
+    return poemSearchRow.join('')
   })
   return result
 }
