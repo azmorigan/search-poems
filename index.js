@@ -36,7 +36,7 @@ function searchPoems(setOfPoems, word1, word2 = "", word3 = "", word4 = "") {
   return result
 }
 
-const requestURL = 'http://buymebuyme.xyz'
+const requestURL = 'https://buymebuyme.xyz'
 const xhr = new XMLHttpRequest()
 xhr.responseType = 'json'
 
