@@ -9,9 +9,6 @@ function searchPoems(setOfPoems, word1, word2 = "", word3 = "", word4 = "") {
     return item.fields.text.includes(word1) && item.fields.text.includes(word2) && item.fields.text.includes(word3) && item.fields.text.includes(word4)
   })
   const result = filterObj.map((item) => {
-    // неудачные регулярки...
-    // let regex = new RegExp("(.+(" + word1 + "|" + word2 + "|" + word3 + "|" + word4 + ").+)", "gm");
-    // let m = regex.exec(item.fields.text)
     let stringToArr = item.fields.text.split('\n')
     let poemSearchRow = stringToArr.map((row) => {
       let rowPoem = ""
@@ -28,7 +25,8 @@ function searchPoems(setOfPoems, word1, word2 = "", word3 = "", word4 = "") {
         rowPoem += row
       }
       if (rowPoem) {
-        return rowPoem + '\n'
+        console.log(rowPoem);
+        return rowPoem
       }
     })
     return poemSearchRow.join('')

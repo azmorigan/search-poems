@@ -6,20 +6,32 @@
   <link rel="stylesheet" href="./index.css">
 </head>
 
-<body>
-  <form class="form" name="form">Введите ключевые слова
-    <input class="form__input" type="text">
-    <button type="submit">Найти</button>
-  </form>
-  <div class="poems-container">
-    <template id="template-poem">
-      <div class="poem">
-        <p class="poem__text"></p>
-      </div>
-    </template>
-  </div>
-  <script src="./index.js"></script>
+<body class="page">
+  <header class="header"></header>
+  <main class="content">
 
+    <div class="description">
+      <h1 class="description__title">Find lines of your favorite poems by keyword</h1>
+      <img class="description__img" src="./images/pushkin.png" alt="Пушкин">
+    </div>
+
+    <div class="poems-wrapper">
+      <form class="form" name="form">
+        <input class="form__input" type="text">
+        <button class="form__button" type="submit">Найти</button>
+      </form>
+      <div class="poems-container">
+        <template id="template-poem">
+          <div class="poem">
+            <p class="poem__text"></p>
+          </div>
+        </template>
+      </div>
+    </div>
+
+  </main>
+  <footer class="footer"></footer>
+  <script src="./index.js"></script>
 </body>
 
 </html>
