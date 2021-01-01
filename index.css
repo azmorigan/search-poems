@@ -49,20 +49,29 @@
 
 .poems-wrapper {
   width: 600px;
+  padding: 20px;
+  border-radius: 15px;
+  background-color: #BA5536;
+  box-sizing: border-box;
 }
 
 .form {
   width: 100%;
+  margin-bottom: 20px;
 }
 
 .form__input {
   display: block;
-  width: 100%;
   height: 40px;
+  width: 300px;
+  margin: auto;
+  padding-left: 20px;
   box-sizing: border-box;
   border: none;
   background-color: #46211A;
   color: #fff;
+  outline: none;
+  border-radius: 20px;
 }
 
 .form__button {
@@ -72,6 +81,10 @@
 .poems-container {
   width: 100%;
   height: 450px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+  justify-content: start;
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -81,18 +94,16 @@
 }
 
 .poem {
-  border: 1px solid red
+  background-color: #46211A;
+  padding-left: 15px;
+  color: #fff;
+  box-shadow: 5px 5px 5px #000;
+}
+
+.poem:last-child {
+  margin-bottom: 10px;
 }
 
 .poem__text {
   font-size: 15px;
-  color: rgb(0, 0, 136);
-}
-
-.footer {
-  width: 100%;
-  height: 40px;
-  margin-top: 20px;
-  background-color: #BA5536;
-  border-radius: 10px;
 }

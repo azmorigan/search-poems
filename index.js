@@ -27,6 +27,8 @@ function searchPoems(setOfPoems, word1, word2 = "", word3 = "", word4 = "") {
       if (rowPoem) {
         console.log(rowPoem);
         return rowPoem
+      } else {
+        console.log("ничего не найдено")
       }
     })
     return poemSearchRow.join('')
