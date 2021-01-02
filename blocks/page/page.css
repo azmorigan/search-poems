@@ -1,0 +1,8 @@
+.page {
+  max-width: 1280px;
+  margin: auto;
+  background-color: #693D3D;
+  color: #fff;
+  font-family: 'Overlock', 'Arial', sans-serif;
+  font-weight: normal;
+}

@@ -1,0 +1,11 @@
+.poem {
+  background-color: #46211A;
+  padding-left: 15px;
+  color: #fff;
+  box-shadow: 5px 5px 5px #000;
+  margin-bottom: 20px;
+}
+
+.poem:last-child {
+  margin-bottom: 10px;
+}

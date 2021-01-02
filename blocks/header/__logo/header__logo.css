@@ -1,0 +1,6 @@
+.header__logo {
+  width: 83px;
+  height: 15px;
+  background: url(../../../images/grazhdanin.svg) no-repeat;
+  cursor: pointer;
+}
